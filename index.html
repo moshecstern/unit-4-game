@@ -16,14 +16,17 @@
     <!-- div to display game name -->
     <div id="gameName"><h1>Crystal Collector</h1></div>
     <!-- div to display random number to guess -->
-    <div id="computerNumber"></div>
+    <div><h2 id="computerNumber">Random number</h2></div>
     <!-- div to display score (w & loss) -->
     <div id="score"><h3>Wins: <span id="wins"></span></h3>
                 <br><h3>Losses: <span id="losses"></span></h3>
     </div>
     <!-- div to display 4 crystals -->
     <div id="crystals">
-
+            <img id="crystal"src="img_girl.jpg" alt="Girl in a jacket">
+            <img id="crystal"src="img_girl.jpg" alt="Girl in a jacket">
+            <img id="crystal"src="img_girl.jpg" alt="Girl in a jacket">
+            <img id="crystal"src="img_girl.jpg" alt="Girl in a jacket">
     </div>
     <!-- div to display users current score  with div inside to display score-->
     <div><h2>Current Score: <span id="currentScore"></span></h2></div>
@@ -35,6 +38,12 @@
 
 <script>
 // assign var for wins, losses, users current score, and cpu random pick
+var userWins=0;
+var userLosses=0;
+var userCurrentScore=0;
+var cpuRandomNumber=0;
+var gameOver = false;
+
 
 // create function that resets game data 
 
