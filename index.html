@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,140 +9,128 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="reset.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
+
 <body>
-<div id="container">
-    <!-- div to display game name -->
-    <div id="gameName"><h1>Crystal Collector</h1></div>
-    <!-- div to display random number to guess -->
-    <div><h2 id="computerNumber">Random number</h2></div>
-     <!-- div to display users current score  with div inside to display score-->
-     <div><h2>Current Score: <span id="currentScore"></span></h2></div>
-    <!-- div to display score (w & loss) -->
-    <div id="score"><h3>Wins: <span id="wins"></span></h3>
-                <br><h3>Losses: <span id="losses"></span></h3>
-                <br><button id="reset">Genarate New Number</button>
+    <div id="container">
+        <!-- div to display game name -->
+        <div id="gameName">
+            <h1>Crystal Collector</h1>
+        </div>
+        <!-- div to display random number to guess -->
+        <div>
+            <h2 id="computerNumber">Random number</h2>
+        </div>
+        <!-- div to display users current score  with div inside to display score-->
+        <div>
+            <h2>Current Score: <span id="currentScore"></span></h2>
+        </div>
+        <!-- div to display score (w & loss) -->
+        <div id="score">
+            <h3>Wins: <span id="wins"></span></h3>
+            <br>
+            <h3>Losses: <span id="losses"></span></h3>
+            <!-- <br><button id="reset">Genarate New Number</button> -->
+        </div>
+        <!-- div to display 4 crystals -->
+        <div id="crystals">
+            <img id="crystal-one" src="img_girl.jpg" alt="crystal 1">
+            <img id="crystal-two" src="img_girl.jpg" alt="crystal 2">
+            <img id="crystal-three" src="img_girl.jpg" alt="crystal 3">
+            <img id="crystal-four" src="img_girl.jpg" alt="crystal 4">
+        </div>
+
+        <!-- div to explain game rules -->
+
+
     </div>
-    <!-- div to display 4 crystals -->
-    <div id="crystals">
-            <img id="crystal-one"src="img_girl.jpg" alt="crystal 1">
-            <img id="crystal-two"src="img_girl.jpg" alt="crystal 2">
-            <img id="crystal-three"src="img_girl.jpg" alt="crystal 3">
-            <img id="crystal-four"src="img_girl.jpg" alt="crystal 4">
-    </div>
-
-    <!-- div to explain game rules -->
-
-    
-</div>
 
 
-<script>
-// assign var for wins, losses, users current score, and cpu random pick
-var userWins=0;
-var userLosses=0;
-var userCurrentScore=0;
-var cpuRandomNumber= null;
-var gameOver = false;
-var crystalOne = 0;
-var crystalTwo=0;
-var crystalThree= 0;
-var crystalFour= 0;
+    <script>
+        // assign var for wins, losses, users current score, and cpu random pick
+        var userWins = 0;
+        var userLosses = 0;
+        var userCurrentScore = 0;
+        var cpuRandomNumber = null;
+        var gameOver = false;
+        var crystalOne = 0;
+        var crystalTwo = 0;
+        var crystalThree = 0;
+        var crystalFour = 0;
 
 
-function startGame(){
-    cpuRandomNumber = Math.floor((Math.random() * 120) + 18);
-    console.log("our random number to guess is " + cpuRandomNumber);
-     // display random number
-    $("#computerNumber").text(cpuRandomNumber);
-    // each crystal displays random number 1- 12 every time game is reset // genarate random number and = to cpurandomscore from 19 to 120
-crystalOne = Math.floor((Math.random() * 12) + 1);
-crystalTwo = Math.floor((Math.random() * 12) + 1);
-crystalThree = Math.floor((Math.random() * 12) + 1);
-crystalFour = Math.floor((Math.random() * 12) + 1);
-}
-startGame();
+        function startGame() {
+            userCurrentScore=0;
+            $("#currentScore").text(userCurrentScore);
+            cpuRandomNumber = Math.floor((Math.random() * 120) + 18);
+            $("#computerNumber").text(cpuRandomNumber);
+            console.log("our random number to guess is " + cpuRandomNumber);
+            // display random number
+            $("#computerNumber").text(cpuRandomNumber);
+            // each crystal displays random number 1- 12 every time game is reset // genarate random number and = to cpurandomscore from 19 to 120
+            crystalOne = Math.floor((Math.random() * 12) + 1);
+            crystalTwo = Math.floor((Math.random() * 12) + 1);
+            crystalThree = Math.floor((Math.random() * 12) + 1);
+            crystalFour = Math.floor((Math.random() * 12) + 1);
+        }
+        startGame();
 
-
-// create function that resets game data 
-$("#reset").on("click", function(){
-    // genarate random number and = to cpurandomscore from 19 to 120
-    cpuRandomNumber = Math.floor((Math.random() * 120) + 18);
-    console.log("our random number to guess is " + cpuRandomNumber);
-     // display random number
-    $("#computerNumber").text(cpuRandomNumber);
-    // each crystal displays random number 1- 12 every time game is reset // genarate random number and = to cpurandomscore from 19 to 120
-
-crystalOne = Math.floor((Math.random() * 12) + 1);
-crystalTwo = Math.floor((Math.random() * 12) + 1);
-crystalThree = Math.floor((Math.random() * 12) + 1);
-crystalFour = Math.floor((Math.random() * 12) + 1);
-
-
- // add crystals value to the crystal above
-//  $("#crystal-one").val(crystalOne);
-//  $("#crystal-two").val(crystalTwo);
-//  $("#crystal-three").val(crystalThree);
-//  $("#crystal-four").val(crystalFour);
-});
-
-
-// every time crystal is clicked add random values together = userCurrentScore
-   $("#crystal-one").on("click", function(){
-       userCurrentScore += crystalOne;
-       calculateScore();
-       console.log("this is the new current score " + userCurrentScore);
-   });
-   $("#crystal-two").on("click", function(){
-       userCurrentScore += crystalTwo;
-       calculateScore();
-       console.log("this is the new current score " + userCurrentScore);
-   });
-   $("#crystal-three").on("click", function(){
-       userCurrentScore += crystalThree;
-       calculateScore();
-       console.log("this is the new current score " + userCurrentScore);
-   });
-   $("#crystal-four").on("click", function(){
-    //    crystalFour += userCurrentScore;
-       userCurrentScore += crystalFour;
-       calculateScore();
-       console.log("this is the new current score " + userCurrentScore);
-   });
+            // create button to reset game
+            // $("#reset").on("click", function () {
+            //     startGame();
+            // });
+        
+        // every time crystal is clicked add random values together = userCurrentScore
+        $("#crystal-one").on("click", function () {
+            userCurrentScore += crystalOne;
+            calculateScore();
+            console.log("this is the new current score " + userCurrentScore);
+        });
+        $("#crystal-two").on("click", function () {
+            userCurrentScore += crystalTwo;
+            calculateScore();
+            console.log("this is the new current score " + userCurrentScore);
+        });
+        $("#crystal-three").on("click", function () {
+            userCurrentScore += crystalThree;
+            calculateScore();
+            console.log("this is the new current score " + userCurrentScore);
+        });
+        $("#crystal-four").on("click", function () {
+            //    crystalFour += userCurrentScore;
+            userCurrentScore += crystalFour;
+            calculateScore();
+            console.log("this is the new current score " + userCurrentScore);
+        });
 
 
 
-    // display on html userCurrentScore
-function calculateScore(){
-// if userCurrentScore is more than cpuRandomScore then you lose then, losses++ and reset game
-if(userCurrentScore == cpuRandomNumber) {
-    console.log("you win!!!!");
-    alert("you win!");
-    userWins++;
-    $("#wins").text(userWins);
-    cpuRandomNumber= null;
-    $("#computerNumber").text(cpuRandomNumber);
-    userCurrentScore=0;
-} else if(userCurrentScore > cpuRandomNumber){
-    console.log("you lose");
-    alert("you lose!");
-    userLosses++;
-    $("#losses").text(userLosses);
-    cpuRandomNumber= null;
-    $("#computerNumber").text(cpuRandomNumber);
-    userCurrentScore= 0;
-} else {
-    console.log("keep playing");
-    $("#currentScore").text(userCurrentScore);
-}
-    // if userCurrentScore is = to cpuRandomScore then, wins++ and reset game
-}
+        // display on html userCurrentScore
+        function calculateScore() {
+            // if userCurrentScore is more than cpuRandomScore then you lose then, losses++ and reset game
+            if (userCurrentScore == cpuRandomNumber) {
+                console.log("you win!!!!");
+                alert("you win!");
+                userWins++;
+                $("#wins").text(userWins);
+                startGame();
+            } else if (userCurrentScore > cpuRandomNumber) {
+                console.log("you lose");
+                alert("you lose!");
+                userLosses++;
+                $("#losses").text(userLosses);
+                startGame();
+            } else {
+                console.log("keep playing");
+                $("#currentScore").text(userCurrentScore);
+            }
+        }
 
-
-</script>
+    </script>
 
 
 </body>
+
 </html>
