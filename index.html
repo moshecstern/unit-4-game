@@ -15,35 +15,45 @@
 
 <body>
     <div id="container">
-        <!-- div to display game name -->
-        <div id="gameName">
-            <h1>Crystal Collector</h1>
-        </div>
-        <!-- div to display random number to guess -->
-        <div>
-            <h2 id="computerNumber">Random number</h2>
-        </div>
-        <!-- div to display users current score  with div inside to display score-->
-        <div>
-            <h2>Current Score: <span id="currentScore"></span></h2>
-        </div>
-        <!-- div to display score (w & loss) -->
-        <div id="score">
-            <h3>Wins: <span id="wins"></span></h3>
+        <div class="gameData">
+            <!-- div to display game name -->
+            <div id="gameName">
+                <h1>Crystal Collector</h1>
+            </div>
+            <!-- div to display random number to guess -->
+            <div>
+                <br>
+                <h2>Number To Match <span id="computerNumber">Random number</span></h2>
+            </div>
+            <!-- div to display users current score  with div inside to display score-->
+            <div>
+                <br>
+                <h2>Current Score: <span id="currentScore"></span></h2>
+            </div>
             <br>
-            <h3>Losses: <span id="losses"></span></h3>
-            <!-- <br><button id="reset">Genarate New Number</button> -->
+            <!-- div to display score (w & loss) -->
+            <div id="score">
+                <h3>Wins: <span id="wins"></span></h3>
+                <h3>Losses: <span id="losses"></span></h3>
+                <!-- <br><button id="reset">Genarate New Number</button> -->
+            </div>
         </div>
         <!-- div to display 4 crystals -->
         <div id="crystals">
-            <img id="crystal-one" src="img_girl.jpg" alt="crystal 1">
-            <img id="crystal-two" src="img_girl.jpg" alt="crystal 2">
-            <img id="crystal-three" src="img_girl.jpg" alt="crystal 3">
-            <img id="crystal-four" src="img_girl.jpg" alt="crystal 4">
+            <img id="crystal-one" src="pictures/crystal1.jpg" alt="crystal 1">
+            <img id="crystal-two" src="pictures/crystal2.jpg" alt="crystal 2">
+            <img id="crystal-three" src="pictures/crystal3.jpg" alt="crystal 3">
+            <img id="crystal-four" src="pictures/crystal4.jpg" alt="crystal 4">
         </div>
 
         <!-- div to explain game rules -->
-
+        <div class="gameData">
+            <ul>
+                <li>When the player clicks on a crystal, it will add a specific amount of points to the player's total score.</li>
+                <li> The player wins if their total score matches the random number from the beginning of the game.</li>
+                <li> The player loses if their score goes above the random number.</li>
+            </ul>
+        </div>
 
     </div>
 
